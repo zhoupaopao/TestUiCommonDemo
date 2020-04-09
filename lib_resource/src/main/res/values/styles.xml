@@ -1,0 +1,97 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- AppCompatEditText默认状态状态设置底线颜色 -->
+<!--        <item name="colorControlNormal">#xxxx</item>-->
+        <!-- AppCompatEditText选择的底线颜色 -->
+<!--        <item name="colorControlActivated">@color/blue</item>-->
+    </style>
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/drakWhite</item>
+        <item name="colorControlActivated">@color/blue</item>
+    </style>
+    <!-- 设置提示文字样式 -->
+    <style name="hintAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+
+
+    <!-- 自定义标题组件-->
+    <declare-styleable name="CommonTitleView">
+        <!--标题的文字-->
+        <attr name="ctv_title" format="string" />
+        <!--箭头图标-->
+        <attr name="ctv_icon" format="reference"/>
+    </declare-styleable>
+
+    <!-- 自定义验证码-->
+    <declare-styleable name="VerificationCodeView">
+        <!--输入框的数量-->
+        <attr name="vcv_code_number" format="integer" />
+        <!--单个验证码的宽度-->
+        <attr name="vcv_code_width" format="dimension|reference" />
+        <!--输入框文字颜色-->
+        <attr name="vcv_code_color" format="color|reference" />
+        <!--输入框文字大小-->
+        <attr name="vcv_code_size" format="dimension|reference" />
+        <!--输入框获取焦点时边框-->
+        <attr name="vcv_code_bg_focus" format="reference" />
+        <!--输入框没有焦点时边框-->
+        <attr name="vcv_code_bg_normal" format="reference" />
+        <!--是否展示密码样式-->
+        <attr name="vcv_code_input_style" format="boolean" />
+    </declare-styleable>
+    <!--    设置radiobutton图标大小-->
+    <declare-styleable name="MyRadioButton">
+        <attr name="drawableTop" format="reference" />
+    </declare-styleable>
+    <!--    一行信息，左侧文字，右侧有两个图标-->
+    <declare-styleable name="LineRightIconView">
+        <attr name="lriv_icon" format="reference" />
+        <attr name="lriv_name" format="string" />
+    </declare-styleable>
+    <declare-styleable name="PersonalTopView">
+        <attr name="ptv_header" format="reference" />
+        <attr name="ptv_name" format="string" />
+        <attr name="ptv_company_name" format="string" />
+    </declare-styleable>
+    <!--    一行信息，中间文字，左侧有个图标-->
+    <declare-styleable name="LineLeftIconView">
+        <attr name="lliv_icon" format="reference" />
+        <attr name="lliv_name" format="string" />
+        <attr name="lliv_height" format="dimension|reference" />
+    </declare-styleable>
+    <!--    白色背景的通用标题栏-->
+    <declare-styleable name="TitleWhiteLinearLayout">
+        <attr name="twll_icon" format="reference" />
+        <attr name="twll_name" format="string" />
+        <attr name="twll_edit" format="string" />
+    </declare-styleable>
+    <!--    一行信息，没有图标-->
+    <declare-styleable name="LineNoneIconView">
+        <attr name="lniv_icon" format="reference" />
+        <attr name="lniv_name" format="string" />
+        <attr name="lniv_text" format="string" />
+        <attr name="lniv_arrow" format="boolean" />
+
+    </declare-styleable>
+    <!--    一行文本信息-->
+    <declare-styleable name="LineTextView">
+        <attr name="ltv_text" format="string" />
+
+    </declare-styleable>
+    <!-- 带文字的密码输入框组件-->
+    <declare-styleable name="PwdTextEditView">
+        <attr name="ptev_name" format="string" />
+        <attr name="ptev_hint" format="string" />
+        <attr name="ptev_text" format="reference|string" />
+        <attr name="customContent" format="string"/>
+    </declare-styleable>
+</resources>

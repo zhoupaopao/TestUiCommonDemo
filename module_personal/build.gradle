@@ -1,0 +1,99 @@
+if(PERSONAL_IS_APPLICATION.toBoolean()){
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin: 'com.android.library'
+}
+
+android {
+    compileSdkVersion build_versions.compileSdk
+    buildToolsVersion build_versions.buildTools
+
+    defaultConfig {
+        if(HOME_IS_APPLICATION.toBoolean()){
+            applicationId "com.example.module_personal"
+        }
+        minSdkVersion build_versions.minSdk
+        targetSdkVersion build_versions.targetSdk
+        versionCode app_version.versionCode
+        versionName app_version.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+        packagingOptions {
+            //解决编译时com.android.builder.merge.DuplicateRelativeFileException: More than one file was found with OS independent path 'META-INF/rxjava.properties'这个错误
+            exclude 'META-INF/rxjava.properties'
+        }
+        multiDexEnabled true
+        ndk {
+            // 设置支持的SO库架构
+
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+        warning 'InvalidPackage'
+    }
+    sourceSets{
+        main{
+//            jniLibs.srcDirs = ['src/main/jniLibs']
+            if(HOME_IS_APPLICATION.toBoolean()){
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }else{
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso
+    implementation deps.material
+    implementation deps.swiperefreshlayout
+    implementation deps.recyclerview
+    implementation deps.constraintlayout
+
+    implementation deps.arouter.arouter_api
+    annotationProcessor deps.arouter.arouter_compiler
+
+    implementation deps.dialogui.jjdxm_dialogui
+
+    implementation deps.retrofit.okhttp3
+    implementation deps.retrofit.converter_gson
+    implementation deps.retrofit.retrofit_adapter
+    implementation deps.persistentCookieJar
+    implementation (deps.simple_xml){
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
+    implementation deps.lifecycle.runtime
+    annotationProcessor deps.lifecycle.compiler
+    implementation deps.lifecycle.viewmodel_savedstate
+
+    implementation project(path: ':lib')
+    implementation project(path: ':lib_resource')
+}

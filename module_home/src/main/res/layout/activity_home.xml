@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/fragment_vp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <RadioGroup
+            android:id="@+id/tabs_rg"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_radio"
+            android:orientation="horizontal">
+
+            <com.example.lib.view.MyRadioButton
+                android:id="@+id/today_tab"
+                style="@style/footer_radioButton_style"
+                android:checked="true"
+                app:drawableTop="@drawable/tab_homepage_selector"
+                android:text="今日" />
+
+            <com.example.lib.view.MyRadioButton
+                android:id="@+id/record_tab"
+                style="@style/footer_radioButton_style"
+                app:drawableTop="@drawable/tab_personal_selector"
+                android:text="记录" />
+
+            <com.example.lib.view.MyRadioButton
+                android:id="@+id/personal_tab"
+                style="@style/footer_radioButton_style"
+                app:drawableTop="@drawable/tab_personal_selector"
+                android:text="账户" />
+        </RadioGroup>
+
+
+    </LinearLayout>
+</layout>

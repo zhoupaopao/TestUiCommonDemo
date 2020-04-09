@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.example.commonlibrary.view.PersonalTopView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/bg_corner_radius_10"
+        app:ptv_header="@mipmap/icon_header"
+        app:ptv_company_name="公司信息未填写"
+        app:ptv_name="王大陆"/>
+    <com.example.lib.view.LineRightIconView
+        android:id="@+id/lriv_personalMessage"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:lriv_icon="@mipmap/icon_dark_code"
+        app:lriv_name="我的片片"/>
+</LinearLayout>

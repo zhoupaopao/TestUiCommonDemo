@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="data"
+            type="com.example.module_personal.viewmodel.PersonalVerifyCodeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.example.lib.view.TitleArrowLinearlayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="请输入验证码"
+                android:textSize="25sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/gray333" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="验证码已发送至手机：" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/status_bar_color"
+                    android:text="" />
+            </LinearLayout>
+
+            <com.example.lib.view.DefineCodeView
+                android:id="@+id/codeView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                app:vcv_code_size="12sp"
+                app:vcv_code_bg_focus="@drawable/bg_text_focused"
+                app:vcv_code_bg_normal="@drawable/bg_text_normal"
+                app:vcv_code_color="@color/status_bar_color"
+                app:vcv_code_number="4"
+                app:vcv_code_width="50dp"
+                app:vcv_code_input_style="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/ll_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+                    <TextView
+                        android:id="@+id/tv_lasttime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_yzm_line"
+                        android:visibility="visible"
+                        android:text="@{String.valueOf(data.time)}" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_yzm_line"
+                        android:visibility="visible"
+                        android:text="s后 " />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_resend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/status_bar_color"
+                    android:text="重发验证码" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_next"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="30dp"
+                android:text="下一步"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_green_corner_radius"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/bg_circle"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:textColor="@color/status_bar_color"
+                    android:text="?" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="@dimen/text_size_small"
+                    android:textColor="@color/status_bar_color"
+                    android:text="收不到验证码" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

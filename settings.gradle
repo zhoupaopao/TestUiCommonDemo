@@ -1,0 +1,8 @@
+rootProject.name='TestDemo'
+include ':app'
+include ':module_home'
+include ':module_login'
+include ':lib'
+include ':lib_resource'
+include ':module_personal'
+include ':module_homepage'
