@@ -136,7 +136,7 @@ public class PersonalAccountMessageActivity extends BaseActivity1<ActivityPerson
                 }
                 break;
             case REQUEST_CAMERA:
-//                File file = new File(imgString);
+                File file = new File(imgString);
 //                Bitmap photo = ImageUtil.getBitMBitmap(imgString);
 //                if (photo!=null){
 //                    img_avatar.setImageBitmap(photo);
