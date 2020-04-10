@@ -12,6 +12,11 @@
         <activity android:name=".app.activity.PersonalChangeMobileActivity"></activity>
         <activity android:name=".app.activity.PersonalVerifyCodeActivity"></activity>
         <activity android:name=".app.activity.PersonalChangePasswordActivity"></activity>
+        <activity android:name=".app.activity.PersonalAccountMessageActivity"></activity>
+        <activity android:name=".app.activity.PersonalMessageMoreActivity"></activity>
+        <activity android:name=".app.activity.PersonalMessageSexActivity"></activity>
+        <activity android:name=".app.activity.PersonalSignNameActivity"></activity>
+        <activity android:name=".app.activity.PersonalNickNameActivity"></activity>
     </application>
 
 </manifest>

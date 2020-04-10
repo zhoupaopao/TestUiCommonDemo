@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/fragment_bg">
+
+        <com.example.lib.view.TitleWhiteLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:twll_name="更多" />
+
+        <com.example.lib.view.LineNoneIconView
+            android:id="@+id/lniv_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/layout_bottom_line"
+            app:lniv_text="男"
+            app:lniv_name="性别" />
+
+        <com.example.lib.view.LineNoneIconView
+            android:id="@+id/lniv_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bottom_line"
+            app:lniv_text="2011-11-01"
+            app:lniv_name="出生日期" />
+
+        <com.example.lib.view.LineNoneIconView
+            android:id="@+id/lniv_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bottom_line"
+            app:lniv_text="江苏 无锡"
+            app:lniv_name="地区" />
+
+        <com.example.lib.view.LineNoneIconView
+            android:id="@+id/lniv_sign_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bottom_line"
+            app:lniv_text="还没有个性签名"
+            app:lniv_name="个性签名" />
+
+
+    </LinearLayout>
+</layout>

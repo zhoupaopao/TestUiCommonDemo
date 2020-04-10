@@ -91,4 +91,8 @@ public class LineNoneIconView extends LinearLayout {
     public String getText(){
         return tv_text.getText().toString().trim();
     }
+
+    public ImageView getIv_icon() {
+        return iv_icon;
+    }
 }

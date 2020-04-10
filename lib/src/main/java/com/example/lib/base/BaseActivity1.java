@@ -38,7 +38,7 @@ public abstract class BaseActivity1<VDB extends ViewDataBinding> extends AppComp
     protected  String TAG;
     private Dialog dialog;
     public Context mContext;
-
+    public BaseActivity1 baseActivity;
     protected VDB mBinding;
 
     /**
@@ -56,6 +56,7 @@ public abstract class BaseActivity1<VDB extends ViewDataBinding> extends AppComp
         //初始化注解
         ARouter.getInstance().inject(this);
         mContext = this;
+        baseActivity=this;
         if(isBinding()){
             mBinding = DataBindingUtil.setContentView(this,getLayoutId());
         }else{

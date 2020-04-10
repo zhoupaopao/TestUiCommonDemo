@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/fragment_bg"
+        tools:ignore="MissingDefaultResource">
+
+        <com.example.lib.view.TitleWhiteLinearLayout
+            android:id="@+id/twll_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:twll_edit="保存"
+            app:twll_name="个性签名" />
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:background="@color/white"
+            android:hint="请输入签名"
+            android:gravity="top"
+            android:maxLength="60" />
+
+    </LinearLayout>
+</layout>

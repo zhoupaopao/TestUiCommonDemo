@@ -94,4 +94,20 @@
         <attr name="ptev_text" format="reference|string" />
         <attr name="customContent" format="string"/>
     </declare-styleable>
+    <!-- 一行信息，有勾选图标-->
+    <declare-styleable name="LineCheckedIconView">
+        <attr name="lciv_name" format="string" />
+        <!--        显示图标-->
+        <attr name="lciv_icon" format="boolean" />
+
+    </declare-styleable>
+    <!-- 自定义带取消输入框-->
+    <declare-styleable name="CommonEditView">
+        <!--输入框的提示-->
+        <attr name="edittext_hint" format="string" />
+        <!--        背景色-->
+        <attr name="cev_back_color" format="color|reference" />
+        <!--        高度-->
+        <attr name="cev_height" format="dimension|reference" />
+    </declare-styleable>
 </resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/fragment_bg">
+
+
+        <com.example.lib.view.TitleWhiteLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:twll_name="个人信息" />
+
+        <com.example.lib.view.LineNoneIconView
+            android:id="@+id/lniv_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/layout_bottom_line"
+            app:lniv_icon="@mipmap/icon_header"
+            app:lniv_name="头像" />
+
+        <com.example.lib.view.LineNoneIconView
+            android:id="@+id/lniv_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bottom_line"
+            app:lniv_text="王大锤"
+            app:lniv_name="昵称" />
+
+        <com.example.lib.view.LineNoneIconView
+            android:id="@+id/lniv_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bottom_line"
+            app:lniv_text="rroajsidnb3232bchasodji"
+            app:lniv_arrow="false"
+            app:lniv_name="ID号" />
+
+        <com.example.lib.view.LineNoneIconView
+            android:id="@+id/lniv_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bottom_line"
+            app:lniv_icon="@mipmap/icon_gray_code"
+            app:lniv_name="我的二维码" />
+
+        <com.example.lib.view.LineNoneIconView
+            android:id="@+id/lniv_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bottom_line"
+            app:lniv_name="更多" />
+    </LinearLayout>
+</layout>

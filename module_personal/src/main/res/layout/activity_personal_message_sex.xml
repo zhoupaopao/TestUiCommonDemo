@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/fragment_bg"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.example.lib.view.TitleWhiteLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:twll_name="设置性别"/>
+    <com.example.lib.view.LineCheckedIconView
+        android:id="@+id/lniv_man"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:lciv_icon="true"
+        app:lciv_name="男"/>
+    <com.example.lib.view.LineCheckedIconView
+        android:id="@+id/lniv_woman"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lciv_name="女"/>
+
+</LinearLayout>

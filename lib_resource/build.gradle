@@ -54,4 +54,7 @@ dependencies {
     testImplementation deps.test.junit
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso
+    //三级联动
+    implementation deps.pickerView.contrarywind_view
+
 }

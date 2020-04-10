@@ -94,6 +94,9 @@ dependencies {
     annotationProcessor deps.lifecycle.compiler
     implementation deps.lifecycle.viewmodel_savedstate
 
+    //三级联动
+    implementation deps.pickerView.contrarywind_view
+
     implementation project(path: ':lib')
     implementation project(path: ':lib_resource')
 }

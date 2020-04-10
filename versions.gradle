@@ -60,6 +60,10 @@ versions.arouter_compiler="1.2.2"
 
 versions.dialogui="1.0.3"
 
+versions.pickerView="4.1.9"
+
+versions.joda_time="2.9.9"
+
 ext.deps = [:]
 
 deps.material = "com.google.android.material:material:$versions.material"
@@ -145,6 +149,14 @@ deps.arouter = arouter
 def dialogui=[:]
 dialogui.jjdxm_dialogui="com.dou361.dialogui:jjdxm-dialogui:$versions.dialogui"
 deps.dialogui=dialogui
+
+def pickerView=[:]
+pickerView.contrarywind_view="com.contrarywind:Android-PickerView:$versions.pickerView"
+deps.pickerView=pickerView
+
+def joda_time=[:]
+joda_time.joda_time="joda-time:joda-time:$versions.joda_time"
+deps.joda_time=joda_time
 
 deps.simple_xml="org.simpleframework:simple-xml:2.7.1"
 
