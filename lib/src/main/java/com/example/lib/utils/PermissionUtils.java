@@ -140,6 +140,7 @@ public class PermissionUtils {
     public  static void checkPermissionActivity(final BaseActivity1 activity, View view, final String[] permissions, final int requestCode, PermissionInterface permissionInterface) {
         //小于23 就什么都不做
         if (Build.VERSION.SDK_INT < 23) {
+            permissionInterface.success(requestCode);
             return;
         }
         List<String> deniedPermissions = findDeniedPermissionsActivity(activity, permissions);

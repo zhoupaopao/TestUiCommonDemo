@@ -93,6 +93,7 @@ dependencies {
     implementation deps.lifecycle.runtime
     annotationProcessor deps.lifecycle.compiler
     implementation deps.lifecycle.viewmodel_savedstate
+    implementation deps.reactivex.rxandroid
 
     //三级联动
     implementation deps.pickerView.contrarywind_view

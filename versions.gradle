@@ -43,7 +43,7 @@ versions.gson = "2.8.6"
 //jenly
 versions.base = "3.2.1-androidx"
 versions.appupdater = "1.0.5-androidx"
-versions.neverCrash= "1.0.0"
+versions.neverCrash = "1.0.0"
 
 versions.timber = "4.7.1"
 versions.logger = "2.2.0"
@@ -54,15 +54,17 @@ versions.flowlayout = "1.1.2"
 
 versions.multidex = "2.0.1"
 
-versions.arouter_api="1.5.0"
+versions.arouter_api = "1.5.0"
 
-versions.arouter_compiler="1.2.2"
+versions.arouter_compiler = "1.2.2"
 
-versions.dialogui="1.0.3"
+versions.dialogui = "1.0.3"
 
-versions.pickerView="4.1.9"
+versions.pickerView = "4.1.9"
 
-versions.joda_time="2.9.9"
+versions.joda_time = "2.9.9"
+
+versions.rxandroid = "1.2.1"
 
 ext.deps = [:]
 
@@ -92,7 +94,7 @@ def lifecycle = [:]
 lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime:$versions.archLifecycle"
 lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.archLifecycle"
 lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.archLifecycle"
-lifecycle.viewmodel_savedstate ="androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.archLifecycle"
+lifecycle.viewmodel_savedstate = "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.archLifecycle"
 
 deps.lifecycle = lifecycle
 
@@ -114,12 +116,16 @@ deps.dagger = dagger
 
 //retrofit
 def retrofit = [:]
-retrofit.okhttp3="com.squareup.okhttp3:okhttp:$versions.retrofit"
-retrofit.retrofit_adapter="com.squareup.retrofit2:adapter-rxjava:$versions.retrofit"
+retrofit.okhttp3 = "com.squareup.okhttp3:okhttp:$versions.retrofit"
+retrofit.retrofit_adapter = "com.squareup.retrofit2:adapter-rxjava:$versions.retrofit"
 retrofit.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.gson = "com.google.code.gson:gson:$versions.gson"
 retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 deps.retrofit = retrofit
+
+def reactivex = [:]
+reactivex.rxandroid = "io.reactivex:rxandroid:$versions.rxandroid"
+deps.reactivex = reactivex
 
 //jenly1314
 def jenly = [:]
@@ -138,29 +144,28 @@ deps.logger = "com.orhanobut:logger:$versions.logger"
 ext.deps = deps
 
 
-
 //arouter
-def arouter=[:]
-arouter.arouter_api="com.alibaba:arouter-api:$versions.arouter_api"
-arouter.arouter_compiler="com.alibaba:arouter-compiler:$versions.arouter_compiler"
+def arouter = [:]
+arouter.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
+arouter.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
 deps.arouter = arouter
 
 
-def dialogui=[:]
-dialogui.jjdxm_dialogui="com.dou361.dialogui:jjdxm-dialogui:$versions.dialogui"
-deps.dialogui=dialogui
+def dialogui = [:]
+dialogui.jjdxm_dialogui = "com.dou361.dialogui:jjdxm-dialogui:$versions.dialogui"
+deps.dialogui = dialogui
 
-def pickerView=[:]
-pickerView.contrarywind_view="com.contrarywind:Android-PickerView:$versions.pickerView"
-deps.pickerView=pickerView
+def pickerView = [:]
+pickerView.contrarywind_view = "com.contrarywind:Android-PickerView:$versions.pickerView"
+deps.pickerView = pickerView
 
-def joda_time=[:]
-joda_time.joda_time="joda-time:joda-time:$versions.joda_time"
-deps.joda_time=joda_time
+def joda_time = [:]
+joda_time.joda_time = "joda-time:joda-time:$versions.joda_time"
+deps.joda_time = joda_time
 
-deps.simple_xml="org.simpleframework:simple-xml:2.7.1"
+deps.simple_xml = "org.simpleframework:simple-xml:2.7.1"
 
-deps.persistentCookieJar="com.github.franmontiel:PersistentCookieJar:v1.0.1"
+deps.persistentCookieJar = "com.github.franmontiel:PersistentCookieJar:v1.0.1"
 //leakcanary
 def leakcanary = [:]
 leakcanary.debug = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
@@ -181,5 +186,6 @@ def addRepos(RepositoryHandler handler) {
     handler.maven { url "https://jitpack.io" }
 
 }
+
 ext.addRepos = this.&addRepos
 

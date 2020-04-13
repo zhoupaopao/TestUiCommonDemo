@@ -109,7 +109,7 @@ dependencies {
     implementation deps.retrofit.converter_gson
     implementation deps.retrofit.retrofit_adapter
     implementation deps.persistentCookieJar
-    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation deps.reactivex.rxandroid
     implementation (deps.simple_xml){
         exclude module: 'stax'
         exclude module: 'stax-api'
