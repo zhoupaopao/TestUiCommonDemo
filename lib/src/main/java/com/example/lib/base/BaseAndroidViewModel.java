@@ -24,11 +24,9 @@ public class BaseAndroidViewModel extends AndroidViewModel implements IViewModel
      * 消息事件
      */
     private MessageEvent mMessageEvent = new MessageEvent();
-    private Context context;
 
     public BaseAndroidViewModel(@NonNull Application application) {
         super(application);
-        context=application.getBaseContext();
     }
 
 

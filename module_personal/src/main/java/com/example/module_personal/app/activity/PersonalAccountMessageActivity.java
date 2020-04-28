@@ -3,12 +3,16 @@ package com.example.module_personal.app.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
@@ -42,7 +46,7 @@ import okhttp3.RequestBody;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class PersonalAccountMessageActivity extends BaseActivity1<ActivityPersonalAccountMessageBinding> implements PermissionInterface {
+public class PersonalAccountMessageActivity extends BaseActivity1<ActivityPersonalAccountMessageBinding> implements PermissionInterface, View.OnClickListener {
     private static final int REQUEST_NICKNAME=1;
     private static final int REQUEST_CAMERA=2;
     private static final int REQUEST_PHOTO=3;
@@ -68,9 +72,19 @@ public class PersonalAccountMessageActivity extends BaseActivity1<ActivityPerson
                 startActivityForResult(intent,REQUEST_NICKNAME);
             }
         });
+        mBinding.lnivCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext,PersonalCodeActivity.class);
+                startActivity(intent);
+            }
+        });
         mBinding.lnivHeader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                showPopWindowUpdateAvatar(v);
+
+
                 List<TieBean> strings = new ArrayList<TieBean>();
                 strings.add(new TieBean("拍摄"));
                 strings.add(new TieBean("从手机相机选取"));
@@ -95,6 +109,40 @@ public class PersonalAccountMessageActivity extends BaseActivity1<ActivityPerson
             }
         });
     }
+
+
+
+
+private PopupWindow mPopupWindowAvatar;
+    //底部弹出框
+    private void showPopWindowUpdateAvatar(View v) {
+        View view = LayoutInflater.from(v.getContext()).inflate(
+                R.layout.layout_personal_pop_bottom_dialog, null);
+        mPopupWindowAvatar = new PopupWindow(view,
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true);
+        mPopupWindowAvatar.setBackgroundDrawable(new BitmapDrawable());
+//        mPopupWindow.setAnimationStyle(R.style.PopupWindowAnimation);
+        int[] location = new int[2];
+        v.getLocationOnScreen(location);
+        int x = location[0];
+        int y = location[1];
+        view.findViewById(R.id.cancel_pop).setOnClickListener(this);
+        view.findViewById(R.id.take_phone_tv).setOnClickListener(this);
+        view.findViewById(R.id.select_phone_tv).setOnClickListener(this);
+        LinearLayout ll_bg = view.findViewById(R.id.ll_bg);
+        ll_bg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopupWindowAvatar.dismiss();
+            }
+        });
+        mPopupWindowAvatar.showAtLocation(v, Gravity.NO_GRAVITY, x, y + mPopupWindowAvatar.getHeight());
+        mPopupWindowAvatar.showAsDropDown(v);
+    }
+
+
+
+
     /**
      * 打开照相机
      */
@@ -222,6 +270,11 @@ public class PersonalAccountMessageActivity extends BaseActivity1<ActivityPerson
 
     @Override
     public void errer(int requestCode) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="data"
+            type="com.example.module_personal.viewmodel.PersonalCodeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/fragment_bg">
+
+        <com.example.lib.view.TitleWhiteLinearLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:twll_edit="..."
+            app:twll_name="我的二维码">
+
+        </com.example.lib.view.TitleWhiteLinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:background="@drawable/bg_corner_radius_10">
+
+            <com.example.lib.view.PersonalTopView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ptv_header="@mipmap/icon_header"
+                app:ptv_company_name="ID号：rroajsidnb3232bchasodji"
+                app:ptv_name="王大锤" />
+
+            <ImageView
+                android:id="@+id/iv_code"
+                android:layout_width="260dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@{data.code}"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="扫一扫上面的二维码可以查看信息"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

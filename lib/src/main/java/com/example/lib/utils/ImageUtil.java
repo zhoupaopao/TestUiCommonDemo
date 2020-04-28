@@ -177,6 +177,46 @@ public class ImageUtil {
         return imgString;
     }
 
+    public static void saveBitmap(Bitmap bitmap, Activity activity) {
+        // 首先保存图片
+        Date date1 = new Date(System.currentTimeMillis());
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("'IMG'_yyyyMMddHHmmss");
+        String imgName = dateFormat1.format(date1);
+        String fileName = FileUtil.SDPATH + imgName + ".JPEG";
+
+
+        File appDir = new File(Environment.getExternalStorageDirectory(), "picc");
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
+        File pictureFile = new File(appDir, fileName);
+        if (pictureFile.exists()) {
+            pictureFile.delete();
+        }
+        try {
+            FileOutputStream out = new FileOutputStream(pictureFile);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 其次把文件插入到系统图库
+        try {
+            MediaStore.Images.Media.insertImage(activity.getContentResolver(),
+                    pictureFile .getAbsolutePath(), fileName, null);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        // 最后通知图库更新
+        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        Uri uri = Uri.fromFile(pictureFile);intent.setData(uri);
+        activity.sendBroadcast(intent);//这个广播的目的就是更新图库，发了这个广播进入相册就可以找到你保存的图片了！，记得要传你更新的file哦
+    }
+
     /**
      * 上传图片
      * @param urlStr

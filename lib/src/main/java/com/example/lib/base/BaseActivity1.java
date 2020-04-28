@@ -5,7 +5,10 @@ import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.Keep;
@@ -41,6 +44,11 @@ public abstract class BaseActivity1<VDB extends ViewDataBinding> extends AppComp
     public BaseActivity1 baseActivity;
     protected VDB mBinding;
 
+
+    /**
+     * 主线程Handler
+     */
+    private Handler handler = new Handler(Looper.getMainLooper());
     /**
      * 封装的findViewByID方法
      */
@@ -223,6 +231,13 @@ public abstract class BaseActivity1<VDB extends ViewDataBinding> extends AppComp
         }
 
     }
-
+    public void tip(final String str) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(mContext, str, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }

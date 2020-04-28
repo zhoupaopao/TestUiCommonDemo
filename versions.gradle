@@ -66,6 +66,8 @@ versions.joda_time = "2.9.9"
 
 versions.rxandroid = "1.2.1"
 
+versions.zxing_core="3.2.1"
+
 ext.deps = [:]
 
 deps.material = "com.google.android.material:material:$versions.material"
@@ -150,6 +152,9 @@ arouter.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
 arouter.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
 deps.arouter = arouter
 
+def zxing = [:]
+zxing.core = "com.google.zxing:core:$versions.zxing_core"
+deps.zxing = zxing
 
 def dialogui = [:]
 dialogui.jjdxm_dialogui = "com.dou361.dialogui:jjdxm-dialogui:$versions.dialogui"
