@@ -32,8 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/layout_bottom_line"
-            app:lniv_text="王大锤"
-            app:lniv_name="昵称" />
+            app:lniv_name="昵称"
+            app:lniv_text="王大锤" />
 
         <com.example.lib.view.LineNoneIconView
             android:id="@+id/lniv_id"

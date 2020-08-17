@@ -180,6 +180,8 @@ deps.leakcanary = leakcanary
 //flowlayout
 deps.flowlayout = "com.hyman:flowlayout-lib:$versions.flowlayout"
 
+deps.immersionbar="com.gyf.immersionbar:immersionbar:3.0.0"
+
 
 ext.deps = deps
 

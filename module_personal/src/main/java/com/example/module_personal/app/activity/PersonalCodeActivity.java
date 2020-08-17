@@ -18,6 +18,7 @@ import com.example.lib.base.BaseActivity1;
 import com.example.lib.utils.EncodingUtils;
 import com.example.lib.utils.ImageUtil;
 import com.example.lib.utils.PermissionUtils;
+import com.example.lib.view.BottomDialogView;
 import com.example.module_personal.R;
 import com.example.module_personal.databinding.ActivityPersonalCodeBinding;
 import com.example.module_personal.viewmodel.PersonalChangeMobelViewModel;
@@ -69,33 +70,53 @@ public class PersonalCodeActivity extends BaseActivity1<ActivityPersonalCodeBind
         mBinding.title.getTv_edit().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<TieBean> strings = new ArrayList<TieBean>();
-                strings.add(new TieBean("保存图片"));
-                strings.add(new TieBean("重置二维码"));
-                DialogUIUtils.showSheet(mContext, strings, "取消", Gravity.BOTTOM, true, true, new DialogUIItemListener() {
+
+                BottomDialogView bottomDialogView = new BottomDialogView(PersonalCodeActivity.this, "保存图片", "重置二维码", "取消", v);
+                bottomDialogView.setClicklistener(new BottomDialogView.DialogClickListenerInterface() {
                     @Override
-                    public void onItemClick(CharSequence text, int position) {
-                        showProgressDialog();
-                        switch (position){
-                            case 0:
-//                                ImageUtil.saveBitmapFile(qrCode);
-                                ImageUtil.saveBitmap(qrCode,PersonalCodeActivity.this);
-                                tip("保存成功");
-                                break;
-                            case 1:
-                                viewModel.getCode_name().setValue(viewModel.getCode_name().getValue()+"aa");
-                                achieveCode();
-
-                                break;
-                        }
-                        dismissProgressDialog();
+                    public void doFirst() {
+                        ImageUtil.saveBitmap(qrCode,PersonalCodeActivity.this);
+                        tip("保存成功");
                     }
-
                     @Override
-                    public void onBottomBtnClick() {
-
+                    public void doSecond() {
+                        viewModel.getCode_name().setValue(viewModel.getCode_name().getValue()+"aa");
+                        achieveCode();
                     }
-                }).show();
+                    @Override
+                    public void doCancel() {
+                        bottomDialogView.getmPopupWindowAvatar().dismiss();
+                    }
+                });
+                bottomDialogView.showAsDropDown(v);
+
+//                List<TieBean> strings = new ArrayList<TieBean>();
+//                strings.add(new TieBean("保存图片"));
+//                strings.add(new TieBean("重置二维码"));
+//                DialogUIUtils.showSheet(mContext, strings, "取消", Gravity.BOTTOM, true, true, new DialogUIItemListener() {
+//                    @Override
+//                    public void onItemClick(CharSequence text, int position) {
+//                        showProgressDialog();
+//                        switch (position){
+//                            case 0:
+////                                ImageUtil.saveBitmapFile(qrCode);
+//                                ImageUtil.saveBitmap(qrCode,PersonalCodeActivity.this);
+//                                tip("保存成功");
+//                                break;
+//                            case 1:
+//                                viewModel.getCode_name().setValue(viewModel.getCode_name().getValue()+"aa");
+//                                achieveCode();
+//
+//                                break;
+//                        }
+//                        dismissProgressDialog();
+//                    }
+//
+//                    @Override
+//                    public void onBottomBtnClick() {
+//
+//                    }
+//                }).show();
             }
         });
     }

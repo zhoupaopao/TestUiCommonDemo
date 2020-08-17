@@ -28,6 +28,7 @@ import com.example.lib.utils.ImageUtil;
 import com.example.lib.utils.PermissionInterface;
 import com.example.lib.utils.PermissionUtils;
 import com.example.lib.utils.ToastUtils;
+import com.example.lib.view.BottomDialogView;
 import com.example.module_personal.R;
 import com.example.module_personal.databinding.ActivityPersonalAccountMessageBinding;
 import com.example.module_personal.http.ApiService;
@@ -47,9 +48,10 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class PersonalAccountMessageActivity extends BaseActivity1<ActivityPersonalAccountMessageBinding> implements PermissionInterface, View.OnClickListener {
-    private static final int REQUEST_NICKNAME=1;
-    private static final int REQUEST_CAMERA=2;
-    private static final int REQUEST_PHOTO=3;
+    private static final int REQUEST_NICKNAME = 1;
+    private static final int REQUEST_CAMERA = 2;
+    private static final int REQUEST_PHOTO = 3;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_personal_account_message;
@@ -60,22 +62,22 @@ public class PersonalAccountMessageActivity extends BaseActivity1<ActivityPerson
         mBinding.lnivMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext,PersonalMessageMoreActivity.class);
+                Intent intent = new Intent(mContext, PersonalMessageMoreActivity.class);
                 startActivity(intent);
             }
         });
         mBinding.lnivNickname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext,PersonalNickNameActivity.class);
-                intent.putExtra("nickName",mBinding.lnivNickname.getText());
-                startActivityForResult(intent,REQUEST_NICKNAME);
+                Intent intent = new Intent(mContext, PersonalNickNameActivity.class);
+                intent.putExtra("nickName", mBinding.lnivNickname.getText());
+                startActivityForResult(intent, REQUEST_NICKNAME);
             }
         });
         mBinding.lnivCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext,PersonalCodeActivity.class);
+                Intent intent = new Intent(mContext, PersonalCodeActivity.class);
                 startActivity(intent);
             }
         });
@@ -83,37 +85,49 @@ public class PersonalAccountMessageActivity extends BaseActivity1<ActivityPerson
             @Override
             public void onClick(View v) {
 //                showPopWindowUpdateAvatar(v);
-
-
-                List<TieBean> strings = new ArrayList<TieBean>();
-                strings.add(new TieBean("拍摄"));
-                strings.add(new TieBean("从手机相机选取"));
-                DialogUIUtils.showSheet(mContext, strings, "取消", Gravity.BOTTOM, true, true, new DialogUIItemListener() {
+                BottomDialogView bottomDialogView = new BottomDialogView(PersonalAccountMessageActivity.this, "拍照", "我的相册", "取消", v);
+                bottomDialogView.setClicklistener(new BottomDialogView.DialogClickListenerInterface() {
                     @Override
-                    public void onItemClick(CharSequence text, int position) {
-                        switch (position){
-                            case 0:
-                                PermissionUtils.checkPermissionActivity(PersonalAccountMessageActivity.this,mBinding.lnivHeader,new String[]{ Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},100,PersonalAccountMessageActivity.this);
-                                break;
-                            case 1:
-                                PermissionUtils.checkPermissionActivity(PersonalAccountMessageActivity.this,mBinding.lnivHeader,new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE},200,PersonalAccountMessageActivity.this);
-                                break;
-                        }
+                    public void doFirst() {
+                        PermissionUtils.checkPermissionActivity(PersonalAccountMessageActivity.this, mBinding.lnivHeader, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100, PersonalAccountMessageActivity.this);
                     }
-
                     @Override
-                    public void onBottomBtnClick() {
-
+                    public void doSecond() {
+                        PermissionUtils.checkPermissionActivity(PersonalAccountMessageActivity.this, mBinding.lnivHeader, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 200, PersonalAccountMessageActivity.this);
                     }
-                }).show();
+                    @Override
+                    public void doCancel() {
+                        bottomDialogView.getmPopupWindowAvatar().dismiss();
+                    }
+                });
+                bottomDialogView.showAsDropDown(v);
+//                List<TieBean> strings = new ArrayList<TieBean>();
+//                strings.add(new TieBean("拍摄"));
+//                strings.add(new TieBean("从手机相机选取"));
+//                DialogUIUtils.showSheet(mContext, strings, "取消", Gravity.BOTTOM, true, true, new DialogUIItemListener() {
+//                    @Override
+//                    public void onItemClick(CharSequence text, int position) {
+//                        switch (position){
+//                            case 0:
+//                                PermissionUtils.checkPermissionActivity(PersonalAccountMessageActivity.this,mBinding.lnivHeader,new String[]{ Manifest.permission.CAMERA,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},100,PersonalAccountMessageActivity.this);
+//                                break;
+//                            case 1:
+//                                PermissionUtils.checkPermissionActivity(PersonalAccountMessageActivity.this,mBinding.lnivHeader,new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE},200,PersonalAccountMessageActivity.this);
+//                                break;
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onBottomBtnClick() {
+//
+//                    }
+//                }).show();
             }
         });
     }
 
+    private PopupWindow mPopupWindowAvatar;
 
-
-
-private PopupWindow mPopupWindowAvatar;
     //底部弹出框
     private void showPopWindowUpdateAvatar(View v) {
         View view = LayoutInflater.from(v.getContext()).inflate(
@@ -141,8 +155,6 @@ private PopupWindow mPopupWindowAvatar;
     }
 
 
-
-
     /**
      * 打开照相机
      */
@@ -153,7 +165,7 @@ private PopupWindow mPopupWindowAvatar;
     private String avatarName = "";//需要提交的头像名称
     private String fingerprint_img = "";
 
-    private void Camera(){
+    private void Camera() {
         FileUtil.createSDCardDir();
         Date date1 = new Date(System.currentTimeMillis());
         SimpleDateFormat dateFormat1 = new SimpleDateFormat("'IMG'_yyyyMMddHHmmss");
@@ -163,15 +175,16 @@ private PopupWindow mPopupWindowAvatar;
         Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         photoUri = FileProvider.getUriForFile(
                 baseActivity,
-                baseActivity.getPackageName()+".fileprovider",
+                baseActivity.getPackageName() + ".fileprovider",
                 cameraPhoto);
         takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
         startActivityForResult(takePhotoIntent, REQUEST_CAMERA);
     }
+
     /**
      * 从相册中选择图片
      */
-    private void Storage(){
+    private void Storage() {
         FileUtil.createSDCardDir();
         Date date1 = new Date(System.currentTimeMillis());
         SimpleDateFormat dateFormat1 = new SimpleDateFormat("'IMG'_yyyyMMddHHmmss");
@@ -189,16 +202,16 @@ private PopupWindow mPopupWindowAvatar;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_NICKNAME:
-                if(resultCode==RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     mBinding.lnivNickname.setText(data.getStringExtra("nickName"));
                 }
                 break;
             case REQUEST_CAMERA:
                 File file = new File(imgString);
                 Bitmap photo = ImageUtil.getBitMBitmap(imgString);
-                if (photo!=null){
+                if (photo != null) {
                     mBinding.lnivHeader.getIv_icon().setImageBitmap(photo);
 //                    ImageUtil.compressImage(photo, file, 30);
 //                    uploadImage(file,0);
@@ -206,9 +219,9 @@ private PopupWindow mPopupWindowAvatar;
                 break;
             case REQUEST_PHOTO:
                 File file1 = new File(imgString);
-                if(data!=null && data.getData()!=null){
+                if (data != null && data.getData() != null) {
                     Bitmap photo1 = ImageUtil.getBitmapFromUri(baseActivity, data.getData());
-                    if (photo1!=null){
+                    if (photo1 != null) {
                         mBinding.lnivHeader.getIv_icon().setImageBitmap(photo1);
 //                        ImageUtil.compressImage(photo1, file1, 30);
 //                        uploadImage(file1,0);
@@ -220,9 +233,10 @@ private PopupWindow mPopupWindowAvatar;
 
     /**
      * 上传图片
+     *
      * @param file
      */
-    private void uploadImage(File file,int type){
+    private void uploadImage(File file, int type) {
         //上传图片需要MultipartBody
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/jpg"), file);
         MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
@@ -234,7 +248,7 @@ private PopupWindow mPopupWindowAvatar;
                                @Override
                                public void onNext(JsonObject data) {
                                    super.onNext(data);
-                                   Log.d("uploadImage",data.toString());
+                                   Log.d("uploadImage", data.toString());
 //                                   ImageLoadBean imageLoadBean = new Gson().fromJson(data.toString(),ImageLoadBean.class);
 //                                   if (imageLoadBean!=null && imageLoadBean.getData()!=null){
 //                                       if (type == 0){
@@ -244,6 +258,7 @@ private PopupWindow mPopupWindowAvatar;
 //                                       }
 //                                   }
                                }
+
                                @Override
                                public void onError(Throwable e) {
                                    super.onError(e);
@@ -260,10 +275,10 @@ private PopupWindow mPopupWindowAvatar;
 
     @Override
     public void success(int requestCode) {
-        if (requestCode == 200){
+        if (requestCode == 200) {
             Storage();
         }
-        if (requestCode == 100){
+        if (requestCode == 100) {
             Camera();
         }
     }
@@ -275,6 +290,16 @@ private PopupWindow mPopupWindowAvatar;
 
     @Override
     public void onClick(View v) {
-
+        int id = v.getId();
+        if (id == R.id.take_phone_tv) {
+            //拍照
+            PermissionUtils.checkPermissionActivity(PersonalAccountMessageActivity.this, mBinding.lnivHeader, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100, PersonalAccountMessageActivity.this);
+        } else if (id == R.id.select_phone_tv) {
+            //相册
+            PermissionUtils.checkPermissionActivity(PersonalAccountMessageActivity.this, mBinding.lnivHeader, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 200, PersonalAccountMessageActivity.this);
+        } else if (id == R.id.cancel_pop) {
+            //取消
+            mPopupWindowAvatar.dismiss();
+        }
     }
 }

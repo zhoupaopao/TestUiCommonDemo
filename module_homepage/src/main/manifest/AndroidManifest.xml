@@ -5,6 +5,8 @@
     <application>
         <activity android:name=".HomePageMainActivity">
         </activity>
+        <activity android:name=".app.activity.HomeListActivity"></activity>
+<activity android:name=".app.activity.HomeRealListActivity"></activity>
     </application>
 
 </manifest>

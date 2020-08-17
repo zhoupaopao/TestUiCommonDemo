@@ -1,5 +1,6 @@
 package com.example.module_homepage.app.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.lib.base.BaseFragment;
 import com.example.lib_resource.utils.ARouterConstants;
 import com.example.module_homepage.R;
+import com.example.module_homepage.app.activity.HomeListActivity;
 import com.example.module_homepage.databinding.FragmentHomePageMainBinding;
 
 @Route(path = ARouterConstants.Home_Page_Main_Fragment)
@@ -29,7 +31,8 @@ public class HomePageMainFragment extends BaseFragment<FragmentHomePageMainBindi
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-
+//        Intent intent=new Intent(getActivity(), HomeListActivity.class);
+//        startActivity(intent);
     }
 
     @Override

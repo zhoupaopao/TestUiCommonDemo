@@ -66,7 +66,7 @@ public class LoginFirstActivity extends BaseActivity {
                         .add("grant_type", "password")
                         .add("scope", "all")
                         .build();
-                viewModel.login(requestBody,LoginFirstActivity.this);
+//                viewModel.login(requestBody,LoginFirstActivity.this);
             }
         });
         binding.loginLl.tv_register.setOnClickListener(new View.OnClickListener() {

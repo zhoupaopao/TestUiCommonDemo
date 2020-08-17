@@ -39,7 +39,7 @@ public class LoginRegisterActivity extends BaseActivity1<ActivityLoginRegisterBi
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "onClick: ");
-                ARouter.getInstance().build(ARouterConstants.Login_VerifyCode_Activity).withString("mobile_num",viewModel.getMobil_num().getValue()).navigation();
+                ARouter.getInstance().build(ARouterConstants.Login_VerifyCode_Activity).withString("mobile_num",viewModel.getMobil_num().getValue()).withString("type","setting").navigation();
 
             }
         });

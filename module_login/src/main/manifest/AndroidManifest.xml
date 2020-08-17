@@ -14,6 +14,10 @@
         <activity android:name=".app.activity.LoginRegisterActivity"></activity>
         <activity android:name=".app.activity.LoginVerifyCodeActivity"/>
         <activity android:name=".app.activity.ShowActivity"/>
+        <activity android:name=".app.activity.LoginNewActivity"/>
+        <activity android:name=".app.activity.LoginSetPasswordActivity"/>
+        <activity android:name=".app.activity.LoginPersonalSettingActivity"/>
+        <activity android:name=".app.activity.LoginForgetPasswordActivity"/>
     </application>
 
 </manifest>

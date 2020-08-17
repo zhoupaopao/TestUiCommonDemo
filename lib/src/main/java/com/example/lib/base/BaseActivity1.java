@@ -22,8 +22,10 @@ import androidx.lifecycle.ViewModelStore;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dou361.dialogui.DialogUIUtils;
+import com.example.lib.R;
 import com.example.lib.http.IProgressDialogAction;
 import com.example.lib.utils.Utils;
+import com.gyf.immersionbar.ImmersionBar;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -65,6 +67,8 @@ public abstract class BaseActivity1<VDB extends ViewDataBinding> extends AppComp
         ARouter.getInstance().inject(this);
         mContext = this;
         baseActivity=this;
+        ImmersionBar.with(this).statusBarColor(R.color.bg_main).init();
+
         if(isBinding()){
             mBinding = DataBindingUtil.setContentView(this,getLayoutId());
         }else{

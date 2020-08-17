@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
+
+        <com.example.lib.view.TitleArrowLinearlayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="填写基本信息"
+                android:textSize="25sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/gray333" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="请务必填写真实信息，方便信息管理"
+                android:textColor="@color/gray"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="姓名"
+                android:textSize="15sp"
+                android:layout_marginTop="80dp"
+                android:textColor="@color/gray333" />
+
+            <com.example.lib.view.CommonEditView
+                android:id="@+id/common_edit_name"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                app:edittext_hint="请输入姓名"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="企业/组织名称"
+                android:textSize="15sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/gray333" />
+
+            <com.example.lib.view.CommonEditView
+                android:id="@+id/common_edit_company_name"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                app:edittext_hint="请输入企业或组织名称"
+                android:layout_height="30dp" />
+
+            <Button
+                android:id="@+id/bt_next"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="30dp"
+                android:text="进入"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_main_corner_radius"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

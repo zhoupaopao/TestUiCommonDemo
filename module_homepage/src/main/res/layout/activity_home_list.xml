@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.module_homepage.viewmodel.UserBean" />
+        <variable
+            name="login"
+            type="com.example.lib_resource.bean.LoginBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{login.password}" />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:image="@{user.icon}" />
+
+        <Button
+            android:id="@+id/btn_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="点击进入列表"
+            />
+    </LinearLayout>
+</layout>

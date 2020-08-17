@@ -2,13 +2,20 @@ package com.example.lib.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.Keep;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.example.lib.utils.SharedPrefUtil;
+import com.example.lib_resource.utils.ARouterConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
+import static com.example.lib.base.BaseApplication.getAppContext;
 
 /**
  * <p></p>
@@ -111,7 +118,23 @@ public class ViewManager {
         }
     }
 
+public void reLogin(){
 
+    if (activityStack != null && activityStack.size() > 0) {
+        for (Activity activity : activityStack) {
+            activity.finish();
+        }
+    }
+//                Postcard postcard = ARouter.getInstance().build(ARouterConstants.Home_Main_Activity);//.withBundle("bundle",bundle).withSerializable("dto",medicalOrderDTO).withString("aaa","传过来的值")
+//                LogisticsCenter.completion(postcard);
+//                Class<?> destination = postcard.getDestination();
+//                Intent intent = new Intent(LoginMainActivity.this, destination);
+//                intent.putExtra("dto", medicalOrderDTO);
+//                startActivityForResult(intent, Request1);
+    ARouter.getInstance().build(ARouterConstants.Login_New_Activity).navigation();
+
+//    SharedPrefUtil.exitLogin();
+}
     /**
      * 结束全部的Activity
      */

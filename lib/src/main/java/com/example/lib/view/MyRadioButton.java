@@ -21,7 +21,7 @@ public class MyRadioButton extends AppCompatRadioButton {
         super(context, attrs);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyRadioButton);//获取我们定义的属性
         drawable = typedArray.getDrawable(R.styleable.MyRadioButton_drawableTop);
-        drawable.setBounds(0, 0, 80, 80);
+        drawable.setBounds(0, 0, 80, 80);//组件左上角的坐标，后两个参数是组件的宽高
         setCompoundDrawables(null, drawable, null, null);
     }
 }

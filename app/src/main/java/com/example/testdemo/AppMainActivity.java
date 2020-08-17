@@ -18,8 +18,10 @@ public class AppMainActivity extends AppCompatActivity {
 //        SharedPreferences sp=getSharedPreferences("Infrared",MODE_PRIVATE);
 //        String isfirst=sp.getString("isfirst","");
 //        if(isfirst==""){
-        ARouter.getInstance().build(ARouterConstants.Login_First_Activity).navigation();
+//        ARouter.getInstance().build(ARouterConstants.Login_First_Activity).navigation();Login_New_Activity
 //        ARouter.getInstance().build(ARouterConstants.Show_Activity).navigation();
+
+        ARouter.getInstance().build(ARouterConstants.Login_New_Activity).navigation();
         AppMainActivity.this.finish();
 //        }else{
 //            Intent intent=new Intent(WelcomeActivity.this,ScanQRCodeActivity.class);

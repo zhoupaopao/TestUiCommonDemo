@@ -1,5 +1,6 @@
 package com.example.module_home;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.SavedStateViewModelFactory;
@@ -14,19 +15,29 @@ import com.alibaba.android.arouter.core.LogisticsCenter;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.example.lib.base.BaseActivityWhiteTitle;
 import com.example.lib_resource.bean.MedicalOrderDTO;
 import com.example.lib_resource.utils.ARouterConstants;
 import com.example.module_home.databinding.ActivityHomeMainBinding;
 
 @Route(path = ARouterConstants.Home_Main_Activity)
-public class HomeMainActivity extends AppCompatActivity {
+public class HomeMainActivity extends BaseActivityWhiteTitle<ActivityHomeMainBinding> {
     private ActivityHomeMainBinding binding;
     private MyHomeViewModel viewModel;
     private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_home_main);
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_home_main;
+    }
+
+    @Override
+    public void initData(@Nullable Bundle savedInstanceState) {
         viewModel=new ViewModelProvider(this,new SavedStateViewModelFactory(getApplication(),this)).get(MyHomeViewModel.class);
 
         binding.setData(viewModel);

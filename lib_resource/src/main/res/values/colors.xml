@@ -5,11 +5,17 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="login_line">#A0B5D0</color>
+    <color name="text_color">#C96800</color>
+<color name="bg_main">#FF8400</color>
+    <color name="edit_bg">#F4F6F8</color>
 
+    
     <color name="text_black">#3f3f3f</color>
     <color name="text_orange">#fa622a</color>
     <color name="text_gray">#999999</color>
     <color name="white">#fff</color>
+    <color name="edit_hint">#798695</color>
     <color name="drakBlack">#606266</color>
     <color name="status_bar_color">#3080D1</color>
     <color name="drakWhite">#DCDFE6</color>

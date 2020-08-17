@@ -30,7 +30,7 @@ public interface ApiService {
             "username: web",
             "password: ",
     })
-    @POST("upms/oauth/token")
+    @POST("oauth/token?grant_type=password&scope=read")
     Observable<JsonObject> token(@Body RequestBody requestBody);
 
     @POST("upms/oauth/token")

@@ -22,6 +22,7 @@ import com.dou361.dialogui.DialogUIUtils;
 import com.example.lib.R;
 import com.example.lib.http.IProgressDialogAction;
 import com.example.lib.utils.Utils;
+import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.List;
 
@@ -57,7 +58,9 @@ public abstract class BaseFragmentActivity<VDB extends ViewDataBinding> extends 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ViewManager.getInstance().addActivity(this);
-        setStatusBarColor(this, R.color.status_bar_color);
+//        setStatusBarColor(this, R.color.white);
+        ImmersionBar.with(this).statusBarColor(R.color.white).statusBarDarkFont(true).init();
+
         //初始化注解
         ARouter.getInstance().inject(this);
         mContext = this;

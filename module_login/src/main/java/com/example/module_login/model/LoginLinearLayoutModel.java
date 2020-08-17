@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.lib.base.BaseActivity;
+import com.example.lib.base.BaseActivity1;
 import com.example.lib.base.BaseModel;
 import com.example.lib.bean.Resource;
 import com.example.lib.http.ApiCallback;
@@ -27,7 +28,7 @@ import rx.schedulers.Schedulers;
 public class LoginLinearLayoutModel extends BaseModel {
     private MutableLiveData<Resource<TokenBean>> tokenLiveData = new MutableLiveData<>();
 
-    public LiveData<Resource<TokenBean>> getTokenInfo(RequestBody requestBody, BaseActivity activity){
+    public LiveData<Resource<TokenBean>> getTokenInfo(RequestBody requestBody, BaseActivity1 activity){
         tokenLiveData.setValue(Resource.loading());
         HttpClient.createApi(ApiService.class)
                 .token(requestBody)

@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.lib.base.BaseActivity;
+import com.example.lib.base.BaseActivity1;
 import com.example.lib.base.BaseModel;
 import com.example.lib.base.BaseViewModel;
 import com.example.lib.base.livedata.MessageEvent;
@@ -32,7 +33,9 @@ public class LoginLinearLayoutViewModel extends BaseViewModel {
     /**
      * 消息事件
      */
-
+    public void clearUserName(){
+        userName.setValue("");
+    }
 
     public MutableLiveData<String> getUserName() {
         if (userName == null) {
@@ -54,7 +57,7 @@ public class LoginLinearLayoutViewModel extends BaseViewModel {
         return source;
     }
 
-    public void login(RequestBody requestBody, BaseActivity activity) {
+    public void login(RequestBody requestBody, BaseActivity1 activity) {
         if (tokenBeanLiveData != null) {
             source.removeSource(tokenBeanLiveData);
         }

@@ -20,6 +20,11 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/blue</item>
     </style>
+<!--    <style name="mainEdittext" parent="Theme.AppCompat.Light">-->
+<!--        <item name="android:colorControlActivated">@color/indigo</item>-->
+<!--        <item name="colorControlActivated">@color/pink</item>-->
+
+<!--    </style>-->
 
 
 
@@ -93,6 +98,16 @@
         <attr name="ptev_hint" format="string" />
         <attr name="ptev_text" format="reference|string" />
         <attr name="customContent" format="string"/>
+    </declare-styleable>
+    <!-- 带眼睛图标的密码输入框组件-->
+    <declare-styleable name="PasswordEyeEditView">
+        <attr name="peev_name" format="string" />
+        <attr name="peev_hint" format="string" />
+        <attr name="peev_text" format="reference|string" />
+    </declare-styleable>
+    <declare-styleable name="PasswordEyeCancelEditView">
+        <attr name="pecev_hint" format="string" />
+        <attr name="pecev_text" format="reference|string" />
     </declare-styleable>
     <!-- 一行信息，有勾选图标-->
     <declare-styleable name="LineCheckedIconView">

@@ -55,7 +55,7 @@ public class PwdTextEditView extends LinearLayout {
 //    }
 
     // 双向绑定 输入框内容
-    @BindingAdapter(value = "app:ptev_text")
+    @BindingAdapter(value = "ptev_text")
     public static void setcustomContent(PwdTextEditView view, String values) {
         values = values == null ? "" : values;
         if (values.trim().equals(view.getContent().trim())) {
@@ -66,7 +66,7 @@ public class PwdTextEditView extends LinearLayout {
         }
     }
 //反向绑定
-    @InverseBindingAdapter(attribute = "app:ptev_text", event = "customContentAttrChanged")
+    @InverseBindingAdapter(attribute = "ptev_text", event = "customContentAttrChanged")
     public static String getcustomContent(PwdTextEditView view) {
         return view.getContent().trim();
     }

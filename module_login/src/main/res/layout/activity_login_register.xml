@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <com.example.lib.view.TitleArrowLinearlayout
@@ -47,6 +48,7 @@
                 android:focusable="true"
                 android:maxLength="11"
                 android:inputType="number"
+                android:theme="@style/mainEdittext"
                 android:text="@={data.mobil_num}"
                 android:hint="请输入手机号" />
 
@@ -57,7 +59,7 @@
                 android:layout_marginTop="30dp"
                 android:text="下一步"
                 android:textColor="@color/white"
-                android:background="@drawable/bg_green_corner_radius"
+                android:background="@drawable/bg_main_corner_radius"
                 android:textSize="18sp" />
 
             <LinearLayout
@@ -85,14 +87,14 @@
                         android:id="@+id/tv_word1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/status_bar_color"
+                        android:textColor="@color/bg_main"
                         android:text="《服务协议》" />
 
                     <TextView
                         android:id="@+id/tv_word2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/status_bar_color"
+                        android:textColor="@color/bg_main"
                         android:text="《危废管理保密协议》"
                         android:layout_toRightOf="@id/tv_word1" />
 
