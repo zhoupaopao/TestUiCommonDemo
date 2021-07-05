@@ -15,6 +15,7 @@ public class LoginIpSettingViewModel extends MvvmBaseViewModel {
 
     public MutableLiveData<String> getIp() {
         if(ip==null){
+            //添加奥啊啊啊
             ip=new MutableLiveData<>();
             ip.setValue(SharedPrefUtil.getString(SharedPref.ip));
         }
