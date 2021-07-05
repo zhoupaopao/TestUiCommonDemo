@@ -165,7 +165,11 @@ public class Utils {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 dp, context.getResources().getDisplayMetrics());
     }
+    public static int dip2px(float dp) {
 
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                dp, context.getResources().getDisplayMetrics())) ;
+    }
     /**
      * The {@code fragment} is added to the container view with id {@code frameId}. The operation is
      * performed by the {@code fragmentManager}.
@@ -190,7 +194,15 @@ public class Utils {
     public static void showToastTips(final Context context, final String tips) {
         Toast.makeText(context, tips, Toast.LENGTH_SHORT).show();
     }
-
+    public static int getStatus(final Context context) {
+        int result = 0;
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        result=(int)(dip2px(result,context));
+        return result;
+    }
 
     /**
      * 修改状态栏颜色，支持4.4以上版本

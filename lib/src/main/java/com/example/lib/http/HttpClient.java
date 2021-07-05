@@ -293,7 +293,7 @@ public class HttpClient {
      */
     public static <T> T createApi(Class<T> clazz) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.Server.online)
+                .baseUrl(Constants.getOnline())
                 .client(okHttpClient)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))

@@ -1,16 +1,28 @@
 package com.example.lib.http;
 
 import android.Manifest;
+import android.util.Log;
+
+import com.example.lib.utils.SharedPref;
+import com.example.lib.utils.SharedPrefUtil;
 
 /**
  * @author zcxiao
  */
 public class Constants {
+//    public static String online = "http://192.168.1.51:8080/";
 
-    public static class Server {
-
-        public static final String online = "http://192.168.1.51:8080/";
+    public static String getOnline() {
+        return SharedPrefUtil.getIpPort();
     }
+
+//    public static  void setOnline(String online) {
+//        Constants.online = online;
+//    }
+//    public  class Server {
+//
+//
+//    }
     /**
      * Permission
      */

@@ -78,4 +78,8 @@ dependencies {
     implementation deps.zxing.core
     implementation project(path: ':lib_resource')
     implementation deps.immersionbar
+    implementation deps.utilcodex
+
+    implementation deps.loadsir
+    api deps.lottie
 }

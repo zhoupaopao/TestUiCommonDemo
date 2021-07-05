@@ -4,6 +4,7 @@ if(LOGIN_IS_APPLICATION.toBoolean()){
     apply plugin: 'com.android.library'
 }
 
+
 android {
     compileSdkVersion build_versions.compileSdk
     buildToolsVersion build_versions.buildTools
@@ -115,4 +116,20 @@ dependencies {
         exclude module: 'stax-api'
         exclude module: 'xpp3'
     }
+    implementation deps.cardview
+    implementation deps.BaseRecyclerViewAdapterHelper
+    implementation deps.dialogplus
+    implementation deps.utilcodex
+    implementation deps.baseAdapter
+
+    implementation  'com.scwang.smart:refresh-layout-kernel:2.0.1'      //核心必须依赖
+    implementation  'com.scwang.smart:refresh-header-classics:2.0.1'    //经典刷新头
+    implementation  'com.scwang.smart:refresh-footer-ball:2.0.1'        //球脉冲加载
+    implementation  'com.scwang.smart:refresh-footer-classics:2.0.1'    //经典加载
+    implementation  'com.scwang.smart:refresh-header-material:2.0.1'    //谷歌刷新头
+
+    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0' //列表滑动
+
+
+
 }

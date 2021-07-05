@@ -26,7 +26,10 @@
 
 <!--    </style>-->
 
-
+    <style name="PopupWindowAnimStyle">
+        <item name="android:windowEnterAnimation">@anim/in_like_drop_down</item>
+        <item name="android:windowExitAnimation">@anim/out_like_shrink_on</item>
+    </style>
 
     <!-- 自定义标题组件-->
     <declare-styleable name="CommonTitleView">

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.module_login.viewmodel.LoginIpSettingViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.ip}"
+            android:inputType="number|numberDecimal"
+            android:digits="1234567890."
+            android:hint="请输入ip地址" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@={viewModel.port}"
+            android:inputType="number"
+            android:hint="请输入端口号" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{v->viewModel.setIpPort()}"
+            android:text="确定" />
+
+    </LinearLayout>
+</layout>

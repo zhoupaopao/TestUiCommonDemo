@@ -84,6 +84,7 @@ public class TitleWhiteLinearLayout extends LinearLayout {
         }
     }
 
-
-
+    public void setName(String name) {
+        tv_name.setText(name);
+    }
 }

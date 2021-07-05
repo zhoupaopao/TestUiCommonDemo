@@ -1,5 +1,6 @@
 package com.example.module_login.app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,10 +48,17 @@ public class LoginNewActivity  extends BaseActivity1<ActivityNewLoginBinding> {
                 RequestBody requestBody = new FormBody.Builder()
                         .add("username", viewModel.getUserName().getValue())
                         .add("password", viewModel.getUserPassword().getValue())
-                        .add("grant_type", "password")
-                        .add("scope", "all")
+//                        .add("grant_type", "password")
+//                        .add("scope", "all")
                         .build();
                 viewModel.login(requestBody,LoginNewActivity.this);
+            }
+        });
+        mBinding.tvIpSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext,LoginSettingIpActivity.class);
+                startActivity(intent);
             }
         });
         mBinding.iv1.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +110,7 @@ public class LoginNewActivity  extends BaseActivity1<ActivityNewLoginBinding> {
         SharedPrefUtil.putToken(mBean.getAccess_token());
         SharedPrefUtil.putTokenBean(mBean);
         SharedPrefUtil.putUsername(username);
+        SharedPrefUtil.putPassword(password);
 //        SharedPrefUtil.putRemPassword(binding.cbRem.isChecked());
 //        if (binding.cbRem.isChecked()) {
 //            SharedPrefUtil.putPassword(password);

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/dialog_plus_header"
+        android:id="@+id/dialog_plus_header"/>
+
+    <com.example.module_login.widget.MaxListView
+        android:divider="@null"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/stroke_bg_radius_them_to_bottom_tans"
+        android:id="@+id/dialog_plus_list"
+        android:layout_below="@+id/dialog_plus_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/dialog_plus_line"
+        android:layout_below="@+id/dialog_plus_list"
+        android:background="#EEE"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <include
+        android:layout_below="@+id/dialog_plus_line"
+        layout="@layout/dialog_plus_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialog_plus_footer"/>
+</RelativeLayout>

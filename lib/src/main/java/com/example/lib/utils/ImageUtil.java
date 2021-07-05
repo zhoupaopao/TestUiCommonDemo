@@ -373,7 +373,7 @@ public class ImageUtil {
 
     public static void setImageView(String url, ImageView imageView,Activity activity){
 
-        Glide.with(activity).load("http://goo.gl/gEgYUd").placeholder( R.mipmap.icon_header ).error( R.mipmap.icon_header ).into(imageView);
+        Glide.with(activity).load(url).placeholder( R.mipmap.icon_header ).error( R.mipmap.icon_header ).into(imageView);
 
     }
 

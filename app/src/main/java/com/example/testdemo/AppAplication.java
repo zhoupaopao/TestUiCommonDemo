@@ -7,16 +7,23 @@ import android.content.pm.PackageManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.lib.base.BaseApplication;
+import com.example.lib.loadsir.CustomCallback;
+import com.example.lib.loadsir.EmptyCallback;
+import com.example.lib.loadsir.ErrorCallback;
+import com.example.lib.loadsir.LoadingCallback;
+import com.example.lib.loadsir.TimeoutCallback;
 import com.example.lib.utils.StringUtils;
 import com.example.lib.utils.Utils;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
-import com.scwang.smartrefresh.layout.api.RefreshFooter;
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.kingja.loadsir.core.LoadSir;
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshFooter;
+import com.scwang.smart.refresh.layout.api.RefreshHeader;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.DefaultRefreshFooterCreator;
+import com.scwang.smart.refresh.layout.listener.DefaultRefreshHeaderCreator;
+
 
 public class AppAplication extends BaseApplication {
 
@@ -47,6 +54,15 @@ public class AppAplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         //切换页面
+
+        LoadSir.beginBuilder()
+                .addCallback(new ErrorCallback())//添加各种状态页
+                .addCallback(new EmptyCallback())
+                .addCallback(new LoadingCallback())
+                .addCallback(new TimeoutCallback())
+                .addCallback(new CustomCallback())
+                .setDefaultCallback(LoadingCallback.class)//设置默认状态页
+                .commit();
 
 
     }

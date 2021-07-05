@@ -5,6 +5,13 @@ public class ARouterConstants {
     public static final String Login_Main_Activity = "/login/LoginMainActivity";
     public static final String Login_First_Activity = "/login/LoginFirstActivity";
     public static final String Login_New_Activity = "/login/LoginNewActivity";
+    public static final String Login_CustomForm_Activity = "/login/CustomFormActivity";
+    public static final String Login_Page_Activity = "/login/PageActivity";
+    public static final String Login_Test_Activity = "/login/TestMvvmActivity";
+    public static final String Login_MvvmRecycle_Activity = "/login/MvvmRecycleActivity";
+
+    public static final String Login_CustomList_Activity = "/login/CustomListActivity";
+    public static final String Login_CustomPadList_Activity = "/login/CustomPadListActivity";
     public static final String Login_Register_Activity = "/login/LoginRegisterActivity";
     public static final String Login_VerifyCode_Activity = "/login/LoginVerifyCodeActivity";
     public static final String Login_SetPassword_Activity = "/login/LoginSetPasswordActivity";

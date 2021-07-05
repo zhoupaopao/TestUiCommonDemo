@@ -18,6 +18,14 @@
         <activity android:name=".app.activity.LoginSetPasswordActivity"/>
         <activity android:name=".app.activity.LoginPersonalSettingActivity"/>
         <activity android:name=".app.activity.LoginForgetPasswordActivity"/>
+        <activity android:name=".app.activity.CustomFormActivity"/>
+        <activity android:name=".app.activity.CustomListActivity"/>
+        <activity android:name=".app.activity.LoginSettingIpActivity"/>
+            <activity android:name=".app.activity.TestMvvmActivity"/>
+        <activity android:name=".app.activity.MvvmRecycleActivity"/>
+        <activity android:name=".app.activity.PageActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".app.activity.CustomPadListActivity" android:screenOrientation="landscape"/>
+        <activity android:name=".app.activity.TeatActivity"/>
     </application>
 
 </manifest>

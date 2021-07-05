@@ -15,6 +15,7 @@ import com.example.lib.base.BaseModel;
 import com.example.lib.base.BaseViewModel;
 import com.example.lib.base.livedata.MessageEvent;
 import com.example.lib.bean.Resource;
+import com.example.lib.utils.SharedPrefUtil;
 import com.example.lib_resource.bean.TokenBean;
 import com.example.module_login.model.LoginLinearLayoutModel;
 
@@ -40,7 +41,7 @@ public class LoginLinearLayoutViewModel extends BaseViewModel {
     public MutableLiveData<String> getUserName() {
         if (userName == null) {
             userName = new MutableLiveData<>();
-            userName.setValue("18800000001");
+            userName.setValue(SharedPrefUtil.getUsername());
         }
         return userName;
     }
@@ -48,7 +49,7 @@ public class LoginLinearLayoutViewModel extends BaseViewModel {
     public MutableLiveData<String> getUserPassword() {
         if (userPassword == null) {
             userPassword = new MutableLiveData<>();
-            userPassword.setValue("123456");
+            userPassword.setValue(SharedPrefUtil.getPassword());
         }
         return userPassword;
     }

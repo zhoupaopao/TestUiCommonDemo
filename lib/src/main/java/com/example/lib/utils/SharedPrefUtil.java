@@ -360,6 +360,11 @@ public class SharedPrefUtil {
         putBoolean("autologin", roleType);
     }
 
+    public static String getIpPort() {
+//        http://114.115.146.11:8080/
+        return "http://"+getString(SharedPref.ip)+":"+getString(SharedPref.port)+"/";
+    }
+
     public static Boolean getAutoLogin() {
         return getBoolean("autologin",false);
     }
