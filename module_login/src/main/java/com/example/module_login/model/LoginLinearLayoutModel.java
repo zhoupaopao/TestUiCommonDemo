@@ -28,7 +28,7 @@ import rx.schedulers.Schedulers;
 public class LoginLinearLayoutModel extends BaseModel {
     private MutableLiveData<Resource<TokenBean>> tokenLiveData = new MutableLiveData<>();
 
-    //1123213
+    //1123213122
     public LiveData<Resource<TokenBean>> getTokenInfo(RequestBody requestBody){
         tokenLiveData.setValue(Resource.loading());
         HttpClient.createApi(ApiService.class)
