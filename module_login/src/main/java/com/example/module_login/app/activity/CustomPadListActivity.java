@@ -25,6 +25,7 @@ import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.example.lib.base.BaseActivity;
 import com.example.lib.base.BaseMvVmActivity;
 import com.example.lib.base.MvvmActivity;
+import com.example.lib.intface.OnCheckClickListener;
 import com.example.lib.utils.Tips;
 import com.example.lib.utils.Utils;
 import com.example.lib.view.PageControl;
@@ -34,18 +35,22 @@ import com.example.lib_resource.utils.ARouterConstants;
 import com.example.module_login.BR;
 import com.example.module_login.R;
 import com.example.module_login.adapter.CustomListAadpter;
+import com.example.module_login.adapter.CustomPadListAadpter;
 import com.example.module_login.adapter.CustomTopAadpter;
 import com.example.module_login.databinding.ActivityPadCustomListBinding;
 import com.example.module_login.viewmodel.CustomPadListViewModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 
 
 @Route(path = ARouterConstants.Login_CustomPadList_Activity)
 public class CustomPadListActivity extends MvvmActivity<ActivityPadCustomListBinding, CustomPadListViewModel> implements CustomPadListViewModel.CallBack {
 
 
-    CustomListAadpter customListAadpter;
+    CustomPadListAadpter customListAadpter;
     CustomTopAadpter customTopAadpter;
 
 
@@ -67,7 +72,7 @@ public class CustomPadListActivity extends MvvmActivity<ActivityPadCustomListBin
     protected void initListener() {
         viewDataBinding.llDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         viewDataBinding.recyclerview.setLayoutManager(new LinearLayoutManager(this));
-        customListAadpter = new CustomListAadpter(R.layout.item_custom_list, viewModel.getArrayList());
+        customListAadpter = new CustomPadListAadpter(R.layout.item_custom_list, viewModel.getArrayList());
         viewDataBinding.recyclerview.setAdapter(customListAadpter);
         //设置横向滚动
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -116,6 +121,50 @@ public class CustomPadListActivity extends MvvmActivity<ActivityPadCustomListBin
             @Override
             public void onClick(View v) {
                 viewDataBinding.llDrawer.openDrawer(viewDataBinding.llLeft);
+            }
+        });
+        viewDataBinding.tvChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                ArrayList<CustomListItem>lastList=new ArrayList<>();
+//                for(CustomListItem customListItem:viewModel.getArrayList()){
+//                    if(customListItem.isChecked()){
+//                        customListItem.setName("11111111");
+//                    }
+//                }
+                for(int pos:viewModel.getPosList()){
+                    viewModel.getArrayList().get(pos).setName("12132131231");
+                }
+                customListAadpter.notifyDataSetChanged();
+//                viewModel.getArrayList().remove()
+            }
+        });
+        viewDataBinding.tvRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModel.moveSelect();
+
+//                Iterator<CustomListItem> it = viewModel.getArrayList().iterator();
+//                while(it.hasNext()){
+//                    CustomListItem x = it.next();
+//                    if(x.isChecked()){
+//                        it.remove();
+//                    }
+//                }
+                customListAadpter.notifyDataSetChanged();
+            }
+        });
+        viewDataBinding.twllTitle.getTv_edit().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //去编辑
+                customListAadpter.setVisible(0);
+            }
+        });
+        customListAadpter.setOnCheckClickListener(new OnCheckClickListener() {
+            @Override
+            public void onCheckClick(int position,boolean check) {
+                viewModel.addOrRemove(position,check);
             }
         });
     }

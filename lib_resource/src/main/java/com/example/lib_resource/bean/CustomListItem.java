@@ -6,6 +6,8 @@ public class CustomListItem {
     private String name;
     private String title;
     private String message;
+    private int visible=1;
+    private boolean checked=false;
 
     public CustomListItem(String id, String number, String name, String title, String message) {
         this.id = id;
@@ -14,6 +16,22 @@ public class CustomListItem {
         this.title = title;
         this.message = message;
     }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+//    public int getVisible() {
+//        return visible;
+//    }
+//
+//    public void setVisible(int visible) {
+//        this.visible = visible;
+//    }
 
     public String getId() {
         return id;

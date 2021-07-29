@@ -28,13 +28,13 @@ import rx.schedulers.Schedulers;
 public class LoginLinearLayoutModel extends BaseModel {
     private MutableLiveData<Resource<TokenBean>> tokenLiveData = new MutableLiveData<>();
 
-    public LiveData<Resource<TokenBean>> getTokenInfo(RequestBody requestBody, BaseActivity1 activity){
+    public LiveData<Resource<TokenBean>> getTokenInfo(RequestBody requestBody){
         tokenLiveData.setValue(Resource.loading());
         HttpClient.createApi(ApiService.class)
                 .token(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new ProgressDialogSubscriber<JsonObject>(activity, true) {
+                .subscribe(new ProgressDialogSubscriber<JsonObject>() {
                                @Override
                                public void onNext(JsonObject data) {
                                    super.onNext(data);

@@ -62,8 +62,9 @@ public abstract class MvvmActivity<V extends ViewDataBinding, VM extends MvvmBas
 
     }
      /** 初始化数据 */
-    protected abstract void initData();
+
     protected abstract void initListener();
+    protected abstract void initData();
      private void initViewModel() {
         viewModel = getViewModel();
         if(viewModel != null) {

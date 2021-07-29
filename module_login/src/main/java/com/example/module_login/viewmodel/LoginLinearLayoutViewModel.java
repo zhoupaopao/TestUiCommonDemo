@@ -58,11 +58,11 @@ public class LoginLinearLayoutViewModel extends BaseViewModel {
         return source;
     }
 
-    public void login(RequestBody requestBody, BaseActivity1 activity) {
+    public void login(RequestBody requestBody) {
         if (tokenBeanLiveData != null) {
             source.removeSource(tokenBeanLiveData);
         }
-        tokenBeanLiveData = mModel.getTokenInfo(requestBody, activity);
+        tokenBeanLiveData = mModel.getTokenInfo(requestBody);
         source.addSource(tokenBeanLiveData, resource -> {
             if (resource != null) {
                 if (resource.isSuccess()) {

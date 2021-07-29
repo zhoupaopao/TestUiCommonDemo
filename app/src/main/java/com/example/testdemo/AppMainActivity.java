@@ -18,9 +18,11 @@ public class AppMainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(SharedPrefUtil.getString(SharedPref.ip).equals("")){
-            SharedPrefUtil.putString(SharedPref.ip,"192.168.1.51");
-            SharedPrefUtil.putString(SharedPref.port,"8081");
+            SharedPrefUtil.putString(SharedPref.ip,"192.168.1.236");
+            SharedPrefUtil.putString(SharedPref.port,"9099");
         }
+        SharedPrefUtil.putPassword("123456");
+        SharedPrefUtil.putUsername("18800000001");
 //        SharedPreferences sp=getSharedPreferences("Infrared",MODE_PRIVATE);
 //        String isfirst=sp.getString("isfirst","");
 //        if(isfirst==""){

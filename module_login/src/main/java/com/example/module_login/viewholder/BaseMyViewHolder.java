@@ -1,6 +1,7 @@
 package com.example.module_login.viewholder;
 
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.IdRes;
@@ -22,6 +23,17 @@ public class BaseMyViewHolder extends BaseViewHolder {
 
     public void setText(@IdRes int idRes, String value) {
         ((TextView) getView(idRes)).setText(value);
-
+    }
+    public void setVisible(@IdRes int idRes, int visible) {
+        if(visible==0){
+            getView(idRes).setVisibility(View.VISIBLE);
+        }else if(visible==1){
+            getView(idRes).setVisibility(View.GONE);
+        }else if(visible==2){
+            getView(idRes).setVisibility(View.INVISIBLE);
+        }
+    }
+    public void setCheck(@IdRes int idRes, Boolean value) {
+        ((CheckBox) getView(idRes)).setChecked(value);
     }
 }

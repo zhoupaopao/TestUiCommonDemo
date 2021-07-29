@@ -23,13 +23,14 @@
                 android:id="@+id/twll_title"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
-                app:twll_name="通用pad列表" />
+                app:twll_name="通用pad列表"
+                app:twll_edit="选择"/>
 
             <LinearLayout
                 android:id="@+id/ll_first"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:orientation="horizontal">
 
                 <TextView
@@ -49,18 +50,20 @@
                     android:text="销量" />
 
                 <TextView
+                    android:id="@+id/tv_change"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="价格" />
+                    android:text="批量修改" />
 
                 <TextView
+                    android:id="@+id/tv_remove"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="口碑" />
+                    android:text="批量删除" />
             </LinearLayout>
 
             <LinearLayout

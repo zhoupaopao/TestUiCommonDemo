@@ -1,5 +1,10 @@
 package com.example.module_login.viewmodel;
 
+import android.os.Build;
+import android.util.Log;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.lib.base.IBaseView;
 import com.example.lib.viewmodel.MvvmBaseViewModel;
 import com.example.lib_resource.bean.CustomListItem;
@@ -7,21 +12,85 @@ import com.example.lib_resource.bean.CustomTopBean;
 import com.example.lib_resource.bean.Student;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CustomPadListViewModel extends MvvmBaseViewModel<CustomPadListViewModel.CallBack> {
     private ArrayList<CustomListItem> arrayList = new ArrayList<>();
     private ArrayList<CustomTopBean> arrayList_top = new ArrayList<>();
-    private int nowClick=0;
+    private int nowClick = 0;
     private int num = 1;
     private int limit = 20;
+    private ArrayList<Integer> posList = new ArrayList<>();
 //    private String []headUrls={
 //            "https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3681880960,455182084&fm=26&gp=0.jpg",
 //            "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2709866189,4129601854&fm=26&gp=0.jpg",
 //            "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1844318833,114428117&fm=26&gp=0.jpg",
 //            "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3304919436,1392532584&fm=26&gp=0.jpg"
 //    };
-    List<Student> students=new ArrayList<>();
+
+
+    public ArrayList<Integer> getPosList() {
+        return posList;
+    }
+
+
+    public void addOrRemove(int pos, boolean check) {
+
+        if (check) {
+//            //选中事件
+            //直接放入，最后删除或者修改的时候再统一排序
+            posList.add(pos);
+
+//            if(posList.size()==0){
+//                posList.add(pos);
+//            }else{
+//                for(int i=0;i<posList.size();i++){
+//                    int itempos=posList.get(i);
+//                    if(itempos>pos){
+//                        posList.add(i,pos);
+//                        break;
+//                    }
+//                    if(i==posList.size()-1){
+//                        //最后一个了，说明是最大的
+//                        posList.add(pos);
+//                    }
+//                }
+//            }
+        } else {
+            //取消事件
+            int itempos = posList.indexOf(pos);
+            posList.remove(itempos);
+        }
+//        posList.add(pos);
+    }
+
+    public void moveSelect(){
+        Collections.sort(posList, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1.compareTo(o2);
+            }
+        });
+        Log.i("onClick11: ", posList.toString());
+        for(int i=0;i<posList.size();i++){
+            arrayList.remove(posList.get(i)-i);
+            if(i==posList.size()-1){
+                break;
+            }
+        }
+        posList.clear();
+    }
+
+    //    public void remove(int pos){
+//        posList.remove(pos);
+//    }
+    public void clear() {
+        posList.clear();
+    }
+
+    List<Student> students = new ArrayList<>();
 
     public List<Student> getStudents() {
         return students;
@@ -52,7 +121,7 @@ public class CustomPadListViewModel extends MvvmBaseViewModel<CustomPadListViewM
 //
 //    }
 
-    public void showDialog(){
+    public void showDialog() {
         showLoading(true);
     }
 //    public void addList(){
@@ -61,6 +130,7 @@ public class CustomPadListViewModel extends MvvmBaseViewModel<CustomPadListViewM
 
     public interface CallBack extends IBaseView {
         void listAdapter();
+
         void topAdapter();
     }
 
@@ -79,6 +149,7 @@ public class CustomPadListViewModel extends MvvmBaseViewModel<CustomPadListViewM
         getPageView().topAdapter();
 
     }
+
     public void addList() {
         for (int i = num; i < limit; i++) {
             arrayList.add(new CustomListItem("id" + i, "number" + i, "name" + i, "title" + i, "message" + i));

@@ -51,7 +51,7 @@ public class LoginNewActivity  extends BaseActivity1<ActivityNewLoginBinding> {
 //                        .add("grant_type", "password")
 //                        .add("scope", "all")
                         .build();
-                viewModel.login(requestBody,LoginNewActivity.this);
+                viewModel.login(requestBody);
             }
         });
         mBinding.tvIpSetting.setOnClickListener(new View.OnClickListener() {
